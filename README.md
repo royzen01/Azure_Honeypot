@@ -8,7 +8,7 @@ This lab will utilize Azure to host a Windows 10 VM. I will also create a Log An
 
 ## Skills in practice
 
-|      -       |            -         |   |   |
+|      📕       |            	🔎     |   |   |
 |--------------|----------------------|---|---|
 | Sentinel     | Powershell Scripting |   |   |
 | Event Viewer | RDP                  |   |   |
