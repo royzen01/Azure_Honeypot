@@ -8,11 +8,11 @@ This lab will utilize Azure to host a Windows 10 VM. I will also create a Log An
 
 ## Skills in practice
 
-|      📕      |            🔎       |          |   |
-|--------------|----------------------|---------|---|
-| Sentinel     | Powershell Scripting | KQL/SQL |   |
-| Event Viewer | RDP                  |     |   |
-| Automation   | Windows Firewall     |     |   |
+|      💾      |            💾       |      💾    |   
+|--------------|----------------------|---------|
+| Azure         | Powershell Scripting | KQL/SQL |   
+| Sentinel      |  Automation          |   RDP    |   
+| Event Viewer  | Windows Firewall     |     |   |
 
 
 ## Creating the VM
@@ -79,15 +79,15 @@ This lab will utilize Azure to host a Windows 10 VM. I will also create a Log An
 * **In this section I collect the logs that would later be parsed into Log Analytics workspace. I did this through a Powershell Script.**
 * **The purpose of the script in the following image is to query `Event Viewer` for failed RDP events. The event ID we are looking for is `4625`.**
 * **Then, the script takes the source IP Address associated with the event, and parses it into the `ipgeolocation.io` API.**
-* **The API provides information assosciated with the IP address such as `latitude`, `longitude` and `country`.**
+* **The API provides information associated with the IP address such as `latitude`, `longitude`, and `country`.**
 
 > ![HP-14](https://github.com/royzen01/Azure_Honeypot/assets/13005742/f9e8747a-54ea-4935-ae8b-3e925f7e1325)
 
-* **A section of the script prints out new events into Powershell. In the following image you can see the attemepts I purposedly failed in the previous section**
+* **A section of the script prints out new events into Powershell. In the following image, you can see the attempts I purposedly failed in the previous section**
 
 > ![HP-15](https://github.com/royzen01/Azure_Honeypot/assets/13005742/ccdb5dc2-5e31-42fb-bd8f-fa5d4ab1710c)
 
-* **The key part of the script is the following. It will take failed RDP logon requests and copy them onto a notepad filed called `failed_rdp.log`.**
+* **The key part of the script is the following. It will take failed RDP logon requests and copy them onto a notepad file called `failed_rdp.log`.**
 * **In the next section I will configure Log Analytics workspace to retrieve this log file to use it with Sentinel**
 
 > ![HP-16](https://github.com/royzen01/Azure_Honeypot/assets/13005742/cd98ec8c-5c5f-412a-942c-0c85d87ce038)
@@ -123,12 +123,12 @@ This lab will utilize Azure to host a Windows 10 VM. I will also create a Log An
 
 * **So at this stage we have collected the logs from Event Viewer using a Powershell script and copied them into a notepad file named `failed_rdp.log`.**
 * **We then created a custom log table within `law-honeypot` labeled `FAILED_RDP_WITH_GEO_CL` which will retrieve and store the file.**
-* **However, now we need to provide `Sentinel` with a usable format for the newly gathered data. The following query will seperate the `RawData` using `KQL`**
+* **However, now we need to provide `Sentinel` with a usable format for the newly gathered data. The following query will separate the `RawData` using `KQL`**
 
 > ![HP-22](https://github.com/royzen01/Azure_Honeypot/assets/13005742/fb26d06f-d3f1-4d26-9bca-93ead692c392)
 
-* **Once the data is properly formatted we are able to created a new workbook withing Sentinel, and use the query to provide it the data**
-* **For visualizaiton of where the attacks where coming from I used the latitude and longtitude and plotted it on a map`**
+* **Once the data is properly formatted we are able to create a new workbook within Sentinel and use the query to provide the data**
+* **For visualization of where the attacks were coming from I used the latitude and longitude and plotted it on a map`**
 * **Here are the end results:**
 
 > ![HP-24](https://github.com/royzen01/Azure_Honeypot/assets/13005742/ef71c4a1-f350-43f8-ac65-230e8b6260a6)
