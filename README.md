@@ -2,9 +2,9 @@
 
 ## Decription
 
-For this lab, I wanted to get some hands-on experience using Azure and Sentinel, so I decided to create VM and open it up to the world to make it vulnerable to attacks.
+For this lab, I wanted to get some hands-on experience using Azure and Sentinel, so I decided to create a Virtual Machine and open it up to the world to make it vulnerable to attacks.
 
-This lab will utilize Azure to host a Windows 10 VM. I will also create a Log Analytics workspace which will retrieve logs from the victim machine. Finally, I will setup Sentinel to retrieve logs from the workspace and plot on it on a live map to show the origin of the different attacks.
+This lab will utilize Azure to host a Windows 10 VM. I will also create a Log Analytics workspace that will retrieve logs from the victim machine. Finally, I will set up Sentinel to retrieve logs from the workspace and plot on it on a live map to show the origin of the different attacks.
 
 ## Skills in practice
 
@@ -15,9 +15,15 @@ This lab will utilize Azure to host a Windows 10 VM. I will also create a Log An
 | Event Viewer  | Windows Firewall     |     |   |
 
 
+## UPDATE
+
+* **Here's what the honeypot looks like 24 hours after creating it and opening it up to attacks.**
+
+>![HP-26](https://github.com/royzen01/Azure_Honeypot/assets/13005742/7ca3ef63-3db7-4498-81ef-aef6fb1652aa)
+
 ## Creating the VM
 
-* **To start off the lab I created an Azure VM running Windows 10. This will be our honeypot so I named it `honeypot-vm`.**
+* **To start off, I created an Azure VM running Windows 10. This will be our honeypot so I named it `honeypot-vm`.**
 
 > ![HP-1](https://github.com/royzen01/Azure_Honeypot/assets/13005742/ce222c3e-7f14-4e59-907d-be8adcf318d6)
 
